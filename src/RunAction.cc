@@ -52,15 +52,15 @@ fMessenger(0)
     
     fMessenger = new RunActionMessenger(this);
 
-    fFileName = "myOutput";
+    fFileName = "SimuOutput";
     
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
     G4cout << "### Analysis Manager is " << analysisManager->GetType() << " ###" << G4endl;
     
     //Creating the scoring ntuple
-    analysisManager->CreateNtuple("LaBrDet","LaBrDet");
-	for (int ii=0; ii<50; ii++){ 
-		std::string name = "Edep";
+    analysisManager->CreateNtuple("ICDet","ICDet");
+	for (int ii=0; ii<7; ii++){ 
+		std::string name = "IC";
 		name.append(std::to_string(ii));
     	analysisManager->CreateNtupleDColumn(name);
 	}

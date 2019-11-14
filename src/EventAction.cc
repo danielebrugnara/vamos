@@ -86,10 +86,10 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 //	std::vector<G4double> hitsE;
 //	std::vector<G4int> hitsDet;
         
-	for (int ii=0; ii<50; ii++){
+	for (int ii=0; ii<7; ii++){
 	    //Hit Detection System
 		if(fSensitiveDetector_ID == -1||1) {
-	    	G4String SensitiveDetectorName="det";
+	    	G4String SensitiveDetectorName="IC";
 			SensitiveDetectorName.append(std::to_string(ii));
 	        if(SDman->FindSensitiveDetector(SensitiveDetectorName,0)) {
 				SensitiveDetectorName.append("/collection");
@@ -132,9 +132,9 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 					G4double tmpY = aHit->GetPos().getY();
 					G4double tmpZ = aHit->GetPos().getZ();
 
-					analysisManager->FillNtupleDColumn(0,50+0,tmpX/CLHEP::mm);
-					analysisManager->FillNtupleDColumn(0,50+1,tmpY/CLHEP::mm);
-					analysisManager->FillNtupleDColumn(0,50+2,tmpZ/CLHEP::mm);
+					analysisManager->FillNtupleDColumn(0,7+0,tmpX/CLHEP::mm);
+					analysisManager->FillNtupleDColumn(0,7+1,tmpY/CLHEP::mm);
+					analysisManager->FillNtupleDColumn(0,7+2,tmpZ/CLHEP::mm);
 				}
 //				Edep += eHit;
 				Edet += eHit;
@@ -150,7 +150,7 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 //			hitsDet.push_back(ii);
 		}
 	//	G4cout << "Edep " << Edep << std::endl;
-		analysisManager->FillNtupleDColumn(0,ii,Edet/CLHEP::keV);
+		analysisManager->FillNtupleDColumn(0,ii,Edet/CLHEP::MeV);
 	}
 //	if (1) {
 //		for (int ii=0; ii<50; ii++){

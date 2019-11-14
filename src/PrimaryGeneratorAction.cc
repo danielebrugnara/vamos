@@ -72,27 +72,27 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction() {
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
 	
 	if(IWantGPS) {
-		 //G4ParticleDefinition* particle = G4IonTable::GetIonTable()->FindIon(2, 4);
-		 G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindAntiParticle("gamma");
+		 //G4ParticleDefinition* particle = G4IonTable::GetIonTable()->FindIon(18, 46, 17, 240*MeV, 0);
+		 //G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindAntiParticle("proton");
 
 
-		fGPS->SetParticleDefinition(particle);
-		fGPS->SetParticlePosition(G4ThreeVector(0.,0.,0.));
+		//fGPS->SetParticleDefinition(particle);
+		//fGPS->SetParticlePosition(G4ThreeVector(0.,0.,0.));
 
 		fGPS->GeneratePrimaryVertex(anEvent);
 	} else {
  		//G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("ion");
  		
 		 //G4ParticleDefinition* particle = G4IonTable::GetIonTable()->FindIon(2, 4);
-		 G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindAntiParticle("gamma");
+//		 G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindAntiParticle("proton");
 
 
-		fGun->SetParticleDefinition(particle);
-		fGun->SetParticlePosition(G4ThreeVector(0.,0.,0.));
-		fGun->SetParticleEnergy(5.8*MeV);
-		fGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
+//		fGun->SetParticleDefinition(particle);
+//		fGun->SetParticlePosition(G4ThreeVector(0.,0.,0.));
+//		fGun->SetParticleEnergy(5.8*MeV);
+//		fGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
 
-		fGun->GeneratePrimaryVertex(anEvent);
+//		fGun->GeneratePrimaryVertex(anEvent);
 	}  
 }
 

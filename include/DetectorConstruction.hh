@@ -108,12 +108,11 @@ private:
 
     //variabili
     
-    //G4double mwppac_pos = 50.*mm;
-    G4double temperature = 239; 
-    G4double pressureISOPPAC = 0.008*bar; 
-    G4double pressureCF4PPAC = 0.008*bar; 
-    G4double pressureISOIC = 0.046*bar; 
-    G4double pressureCF4IC = 0.046*bar; 
+    G4double temperature = 297; 
+    G4double pressureISOPPAC = 0.007*bar; 
+    G4double pressureCF4IC = 0.120*bar; 
+    G4double densityISOPPAC = 0.000014308*g/cm3; 
+    G4double densityCF4IC = 0.00043326*g/cm3;
     
 	//definition of Materilas
     G4Material* Vacuum;
@@ -121,30 +120,49 @@ private:
     G4Material* Tungsteno;
     G4Material* Acciaio;
 	G4Material* Mylar;
-	G4Material* LaBr3;
 	G4Material* IsobutanoPPAC;
-	G4Material* IsobutanoIC;
-	G4Material* tetrafluorometanoPPAC;
 	G4Material* tetrafluorometanoIC;
 	
 	//definiton of geometrical variables
-    G4int nr_scintillators = 1;
 
 	//definition of Volumes
 	G4LogicalVolume* worldLogic;
-    
-    G4LogicalVolume* LidLogical;
-    G4LogicalVolume* ChamberLogical;
-    G4LogicalVolume* ChamberDummyLogical;
 
-    std::vector<G4LogicalVolume*> ScintillatorLogical;
-    G4LogicalVolume* ScintillatorShellLogical;
+    //Chamber
+    G4VSolid* chamber;
+    G4LogicalVolume* chamberLogic;
+    G4PVPlacement* chamberPhysical;
+
+    //Definition of layers  
+	struct Layer{
+		G4Material* material;
+		G4double thickness;
+		G4double position;
+		std::string name;
+		G4VSolid* solid;
+		G4LogicalVolume* logical;
+		G4VisAttributes* visualization;
+		G4PVPlacement* physical;
+		Layer(G4Material* mat, G4double thick, std::string na, bool visualize, G4double r, G4double g, G4double b): 
+			material(mat),
+			thickness(thick),
+			position(0),
+			name(na),
+			solid(nullptr),
+			logical(nullptr),
+			visualization(nullptr),
+			physical(nullptr){
+                visualization = new G4VisAttributes(G4Color(r, g, b));
+                if (visualize)
+                    visualization->SetForceSolid(true);
+            }
+	};
+	std::map<int, Layer*> layers;
+
+ //   std::vector<G4LogicalVolume*> GasLogical;
     
     //Physical volumes
-	G4VPhysicalVolume* LidPhysical;
-	G4VPhysicalVolume* ChamberPhysical;
-	std::vector<G4VPhysicalVolume*> ScintillatorPhysical;
-	G4VPhysicalVolume* ScintillatorShellPhysical;
+//	std::vector<G4VPhysicalVolume*> GasPhysical;
 
 };
 

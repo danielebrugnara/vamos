@@ -2,7 +2,7 @@
 # Setup the project
 #
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(myApp)
+project(vamos)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -10,7 +10,7 @@ project(myApp)
 # to build a batch mode only executable
 #
 
-option(WITH_GEANT4_UIVIS "Build myApp with Geant4 UI and Vis drivers" ON)
+option(WITH_GEANT4_UIVIS "Build vamos with Geant4 UI and Vis drivers" ON)
 if(WITH_GEANT4_UIVIS)
   find_package(Geant4 REQUIRED ui_all vis_all)
 else()
@@ -41,7 +41,9 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 # because it relies on these scripts being in the current working directory.
 #
 set(project_SCRIPTS
-  vis.mac
+  macros/vis.mac
+  macros/run.mac
+  macros/run.sh
   )
 
 foreach(_script ${project_SCRIPTS})
@@ -57,19 +59,19 @@ endforeach()
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(myApp myApp.cc ${sources} ${headers})
-target_link_libraries(myApp ${Geant4_LIBRARIES})
+add_executable(vamos vamos.cc ${sources} ${headers})
+target_link_libraries(vamos ${Geant4_LIBRARIES})
 
 
 #----------------------------------------------------------------------------
 # For internal Geant4 use - but has no effect if you build this
-# myApp standalone
+# vamos standalone
 #
-add_custom_target(myApp_custom DEPENDS myApp)
+add_custom_target(vamos_custom DEPENDS vamos)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS myApp DESTINATION bin)
+install(TARGETS vamos DESTINATION bin)
 
 

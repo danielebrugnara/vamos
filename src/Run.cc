@@ -68,7 +68,7 @@ void Run::RecordEvent(const G4Event* event)
   	if(!HCE) return;
     
 	//get the hits Collection, which is basically a map: (hit,dose*), with ID = fCollID_dose
-  	G4THitsMap<G4double>* evtMap = static_cast<G4THitsMap<G4double>*>(HCE->GetHC(fCollID_dose));
+  	////G4THitsMap<G4double>* evtMap = static_cast<G4THitsMap<G4double>*>(HCE->GetHC(fCollID_dose));
     
 	//map iterator
   	std::map<G4int,G4double*>::iterator itr;

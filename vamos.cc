@@ -30,6 +30,7 @@
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
 #else
+#warning Please compile in MT mode
 #include "G4RunManager.hh"
 #endif
 
@@ -83,6 +84,7 @@ int main(int argc,char** argv)
     }
     G4cout << "### MT MODE ON " << runManager->GetNumberOfThreads() << " ###" << G4endl;
 #else
+#warning Please compile in MT mode
     G4RunManager* runManager = new G4RunManager;
     G4cout << "### MT MODE OFF ###" << G4endl;
 #endif

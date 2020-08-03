@@ -75,25 +75,25 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 {	
 
   	//detector construction instance
- 	const DetectorConstruction* detectorConstruction = 
-		static_cast<const DetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+ 	////const DetectorConstruction* detectorConstruction = 
+	////	static_cast<const DetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
 	
 
 	
 	//get pre and post step points
-	G4StepPoint* preStepPoint = step->GetPreStepPoint();
-	G4StepPoint* postStepPoint = step->GetPostStepPoint();
+	////G4StepPoint* preStepPoint = step->GetPreStepPoint();
+	////G4StepPoint* postStepPoint = step->GetPostStepPoint();
 
 	//get the volume of the current step
-  	G4LogicalVolume* volume = preStepPoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  	////G4LogicalVolume* volume = preStepPoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
   	
   	//get track and particle name
   	G4Track* track = step->GetTrack();
-  	G4int ID = track->GetTrackID();
+  	////G4int ID = track->GetTrackID();
  	G4String partName = track->GetDefinition()->GetParticleName();
      	
  	//get the total energy deposited by the particle during the current step
-  	G4double edep = step->GetTotalEnergyDeposit();
+  	////G4double edep = step->GetTotalEnergyDeposit();
 //	G4cout<<edep/CLHEP::keV<<"\n";
 
 

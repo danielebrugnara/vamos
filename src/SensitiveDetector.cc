@@ -69,7 +69,7 @@ bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*)
     //G4cout<<"i am never here\n";
     G4Track* vTrack = aStep->GetTrack();
     G4StepPoint* preStepPoint = aStep->GetPreStepPoint();
-    G4StepPoint* postStepPoint = aStep->GetPostStepPoint();
+    ////G4StepPoint* postStepPoint = aStep->GetPostStepPoint();
     
     //if(!(preStepPoint->GetStepStatus() == fGeomBoundary )) {return true;}
     	

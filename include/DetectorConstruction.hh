@@ -143,7 +143,7 @@ private:
 		G4LogicalVolume* logical;
 		G4VisAttributes* visualization;
 		G4PVPlacement* physical;
-		Layer(G4Material* mat, G4double thick, std::string na, bool visualize, G4double r, G4double g, G4double b): 
+		Layer(G4Material* mat, G4double thick, std::string na, bool visualize, G4double rr, G4double gg, G4double bb): 
 			material(mat),
 			thickness(thick),
 			position(0),
@@ -152,7 +152,7 @@ private:
 			logical(nullptr),
 			visualization(nullptr),
 			physical(nullptr){
-                visualization = new G4VisAttributes(G4Color(r, g, b));
+                visualization = new G4VisAttributes(G4Color(rr, gg, bb));
                 if (visualize)
                     visualization->SetForceSolid(true);
             }

@@ -1,3 +1,3 @@
 export G4MULTITHREADED
-./myApp ../run.mac 12
+./vamos run.mac 6
 

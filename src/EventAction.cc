@@ -154,6 +154,9 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 		//G4cout << "Edep " << Edep << std::endl;
 		analysisManager->FillNtupleDColumn(0,ii,Edep/CLHEP::MeV);
 	}
+    G4double initialEnergy = aEvent->GetPrimaryVertex()->GetPrimary()->GetKineticEnergy();
+    analysisManager->FillNtupleDColumn(0,7+3,initialEnergy/CLHEP::MeV);
+
 //	if (1) {
 //		for (int ii=0; ii<50; ii++){
 //		   	analysisManager->FillNtupleDColumn(0,0,hitsE);

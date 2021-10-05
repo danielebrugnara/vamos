@@ -1,0 +1,24 @@
+/run/initialize
+
+
+#/gps/energy 240 MeV
+
+/gps/ene/type Lin
+/gps/ene/min 250 MeV
+/gps/ene/max 251 MeV
+
+/gps/ene/gradient 0.
+/gps/ene/intercept 1.
+
+/gps/particle ion
+/gps/ion 18 46 17
+
+/gps/position 0. 0. 0. mm
+/gps/direction 0 0.1 0.8 
+
+/gps/pos/type Plane
+/gps/pos/shape Rectangle
+/gps/pos/centre 0. 0. 0. mm
+
+/run/beamOn 1000
+

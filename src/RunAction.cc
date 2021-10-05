@@ -64,9 +64,10 @@ fMessenger(0)
 		name.append(std::to_string(ii));
     	analysisManager->CreateNtupleDColumn(name);
 	}
-    	analysisManager->CreateNtupleDColumn("PosX");
-    	analysisManager->CreateNtupleDColumn("PosY");
-    	analysisManager->CreateNtupleDColumn("PosZ");
+    analysisManager->CreateNtupleDColumn("PosX");
+    analysisManager->CreateNtupleDColumn("PosY");
+    analysisManager->CreateNtupleDColumn("PosZ");
+    analysisManager->CreateNtupleDColumn("E0");
 //    analysisManager->CreateNtupleDColumn("ti");
 //    analysisManager->CreateNtupleDColumn("tf");
     analysisManager->FinishNtuple();

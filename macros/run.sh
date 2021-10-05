@@ -1,3 +1,4 @@
 export G4MULTITHREADED
-./vamos run.mac 6
+make && ./vamos run.mac 5
+hadd -f SimuOutput.root SimuOutput_t*
 

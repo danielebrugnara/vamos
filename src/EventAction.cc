@@ -94,13 +94,13 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 	        if(SDman->FindSensitiveDetector(SensitiveDetectorName,0)) {
 				SensitiveDetectorName.append("/collection");
 	            fSensitiveDetector_ID = SDman->GetCollectionID(SensitiveDetectorName);
-//				G4cout << "Able to find detector "<<SensitiveDetectorName<<std::endl;
+				//G4cout << "Able to find detector "<<SensitiveDetectorName<<std::endl;
 	        }else{
 				continue;
-//				G4cout << "Unable to find detector "<<SensitiveDetectorName<<std::endl;
+				G4cout << "Unable to find detector "<<SensitiveDetectorName<<std::endl;
 			}
 	    }else{
-	//		G4cout <<"Sensitive det ID = "<< fSensitiveDetector_ID<<std::endl;
+			G4cout <<"Sensitive det ID = "<< fSensitiveDetector_ID<<std::endl;
 		}
 
 	    SensitiveDetectorHitsCollection* fSensitiveDetectorHC = 0;
@@ -120,9 +120,11 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 
 		//filling the scoring ntuple
 		G4double eHit = 0.;
-		G4double Edet=0;
+		//G4double Edet=0;
+		Edep=0;
 	    if(fSensitiveDetectorHC ) {
 	        int vNumberOfHit = fSensitiveDetectorHC->entries();
+			//G4cout << "Before loop on hits, nhits "<<vNumberOfHit << std::endl;
 	        for(int i=0; i<vNumberOfHit; i++) {
 	            SensitiveDetectorHit* aHit = (*fSensitiveDetectorHC)[i];
 //				tHit = aHit->GetTime();
@@ -137,7 +139,7 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 					analysisManager->FillNtupleDColumn(0,7+2,tmpZ/CLHEP::mm);
 				}
 //				Edep += eHit;
-				Edet += eHit;
+				Edep += eHit;
 //				if (i==0) {
 //					ti = tHit;  
 //					tf = tHit;  
@@ -145,12 +147,12 @@ void EventAction::EndOfEventAction(const G4Event* aEvent)
 //				if (tHit < ti && eHit > 0.) ti = tHit;
 //				if (tHit > tf && eHit > 0.) tf = tHit;
 	        }
-//			G4cout <<"i value :" <<ii<< "    Edet: "<<Edet<<"\n";
+			//G4cout <<"i value :" <<ii<< "    Edet: "<<Edep<<"\n";
 //			hitsE.push_back(Edep/CLHEP::keV);
 //			hitsDet.push_back(ii);
 		}
-	//	G4cout << "Edep " << Edep << std::endl;
-		analysisManager->FillNtupleDColumn(0,ii,Edet/CLHEP::MeV);
+		//G4cout << "Edep " << Edep << std::endl;
+		analysisManager->FillNtupleDColumn(0,ii,Edep/CLHEP::MeV);
 	}
 //	if (1) {
 //		for (int ii=0; ii<50; ii++){
